@@ -6,7 +6,7 @@ import requests
 # load environment file
 config = dotenv_values(".env")
 
-# get mongo db connection string
+# get MongoDB connection string
 uri = config["MONGO_URI"]
 
 # Create a new client and connect to the server
@@ -43,7 +43,7 @@ def generate_embedding(text: str) -> list[float]:
 # for document in collection.find(({'plot': {"$exists": True}})).limit(50):
 #     # add a column in collection
 #     document['plot_embedding_hf'] = generate_embedding(document['plot'])
-#     # replace the document in mongo db with new collection
+#     # replace the document in MongoDB with new collection
 #     collection.replace_one({'_id': document['_id']}, document)
 
 
