@@ -18,11 +18,6 @@ collection = db.movies
 # count the documents in the collection
 print("No. of documents: ", collection.count_documents({}))
 
-# print first 5 items in collection
-items = collection.find().limit(5)
-for item in items:
-    print(item)
-
 # get hugging face inference token and space inference api
 hf_token = config["HF_INFERENCE_TOKEN"]
 embedding_url = config["HF_EMBEDDING_URL"]
@@ -44,6 +39,7 @@ def generate_embedding(text: str) -> list[float]:
 
 
 # generate embeddings for first 50 items
+# ********************** uncomment below code if running for first time **********************
 # for document in collection.find(({'plot': {"$exists": True}})).limit(50):
 #     # add a column in collection
 #     document['plot_embedding_hf'] = generate_embedding(document['plot'])
@@ -51,3 +47,18 @@ def generate_embedding(text: str) -> list[float]:
 #     collection.replace_one({'_id': document['_id']}, document)
 
 
+query = "Cartoon characters doing funny things"
+
+# runs aggregation pipeline in MongoDB
+results = collection.aggregate([
+    {"$vectorSearch": {
+        "queryVector": generate_embedding(query),
+        "path": "plot_embedding_hf",
+        "numCandidates": 100,
+        "limit": 4,
+        "index": "SemanticSearchMoviePlot",
+    }}
+])
+
+for result in results:
+    print(f'Movie Name: {result["title"]}, \nMovie Plot: {result["plot"]}\n')
