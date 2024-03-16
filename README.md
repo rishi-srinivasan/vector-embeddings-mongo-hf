@@ -77,3 +77,8 @@ pip install requirements.txt
 ```python
 python3 movie_recs.py
 ```
+
+## Thanks
+[Free Code Camp](https://www.freecodecamp.org/)
+
+[Hugging Face](https://huggingface.co/)
