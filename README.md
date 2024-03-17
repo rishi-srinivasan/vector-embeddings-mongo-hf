@@ -66,7 +66,7 @@ Below environment variables need to be saved in a .env file
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the packages.
 
 ```bash
 pip install requirements.txt
