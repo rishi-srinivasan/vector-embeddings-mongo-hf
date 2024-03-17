@@ -66,14 +66,21 @@ Below environment variables need to be saved in a .env file
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the packages.
+Run the setup file [setup.sh](https://github.com/rishi-srinivasan/text-to-sql-llm/blob/main/setup.sh) to create .env file.
+
+The setup file also installs the requirements from [requirements.txt](https://github.com/rishi-srinivasan/vector-embeddings-mongo-hf/blob/main/requirements.txt) file.
 
 ```bash
-pip install requirements.txt
+sh setup.sh
 ```
-
 ## Deploy
 
 ```python
 python3 movie_recs.py
 ```
+
+## Thanks
+[Free Code Camp](https://www.freecodecamp.org/)
+
+[Hugging Face](https://huggingface.co/)
